@@ -5,7 +5,6 @@ Feature: Edit car info icons from the Vehicle page.
     Given the user is on the login page
 
 
-
   Scenario Outline: US7AC1TC1 Verify users see the car edited options on the Vehicle page
     Given the user logged in as "<user>"
     And   Click the "Vehicles" under the "Fleet"
