@@ -140,4 +140,16 @@ public abstract class BasePage {
 
     @FindBy(xpath = "//*[@id=\"main-menu\"]/ul/li[2]/div/div/ul/li[4]/a/span")
     public WebElement VehicleOdometerSalesManager;
+
+    public void clickElementOnTheBasePage (String element){
+        switch (element){
+            case "FleetModule":
+                fleetModule.click(); break;
+            case "Vehicle CostsModule":
+                fleetModuleVehicleCosts.click(); break;
+        }
+
+    }
+
+
 }

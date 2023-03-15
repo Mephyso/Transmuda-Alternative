@@ -6,15 +6,24 @@ import com.transmuda.utilities.BrowserUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.transmuda.utilities.ButtonGenerator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.messages.types.DataTable;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class US13_Stepdefs {
-
+    private static Logger log = LoggerFactory.getLogger(US13_Stepdefs.class);
     DashboardPage dashboardPage = new DashboardPage();
     VehicleCostsPage vehicleCostsPage = new VehicleCostsPage();
+    ButtonGenerator buttonGenerator= new ButtonGenerator();
+
+
+
     @And("the user click on the Vehicle Costs under the Fleet")
     public void theUserClickOnTheVehicleCostsUnderTheFleet() {
         dashboardPage.waitUntilLoaderScreenDisappear();
@@ -46,4 +55,14 @@ public class US13_Stepdefs {
         Assert.assertTrue(result);
     }
 
+    @And("the user click on {string} in {string}")
+    public void theUserClickOnIn(String element, String page) {
+        buttonGenerator.clickTheElementOnThePage(element, page);
+    }
+
+    @Then("the user should see webelement {} on the {string}")
+    public void theUserShouldSeeWebelementOnThe(DataTable element, String page) {
+        log.info("Log of method");
+        buttonGenerator.checkTheWebElement(element, page);
+    }
 }

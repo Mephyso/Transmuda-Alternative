@@ -2,6 +2,7 @@ package com.transmuda.step_definitions;
 
 import com.transmuda.pages.LoginPage;
 import com.transmuda.utilities.ConfigurationReader;
+import com.transmuda.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 public class LoginStepDefs {
@@ -39,5 +40,14 @@ public class LoginStepDefs {
     }
 
 
+    @Given("the user is on the {string} page")
+    public void theUserIsOnThePage(String page) {
+        Driver.getDriver().get(ConfigurationReader.getProperty(page));
+    }
 
+    @Given("the user enters username {string} and password {string}")
+    public void theUserEntersUsernameAndPassword(String username, String password) {
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(username,password);
+    }
 }
